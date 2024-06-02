@@ -1,7 +1,7 @@
 import { DisplayObject } from '@pixi/display';
 import { TextStyle } from '@pixi/text';
 
-export interface IComponent {
+export interface IComponent extends DisplayObject{
   init(): void;
   setSize(width: number, height: number): void;
   setPosition(x: number, y: number): void;

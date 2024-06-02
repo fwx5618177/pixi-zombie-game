@@ -10,18 +10,16 @@ import '@pixi/events';
 class Button extends PixiComponent implements IButton {
   content: string;
   style: TextStyle;
-  onClick: () => void;
   buttonImage: string;
 
   private sprite: Sprite | undefined;
   private buttonText: Text | undefined;
 
-  constructor(app: Application, x: number, y: number, content: string, style: TextStyle, onClick: () => void, buttonImage: string) {
+  constructor(app: Application, x: number, y: number, content: string, style: TextStyle, buttonImage: string) {
     super(app, x, y);
 
     this.content = content;
     this.style = style;
-    this.onClick = onClick;
     this.buttonImage = buttonImage;
     this.init();
   }
@@ -35,7 +33,6 @@ class Button extends PixiComponent implements IButton {
     this.sprite.y = this.y;
     this.sprite.interactive = true;
     this.sprite.buttonMode = true;
-    this.sprite.on('pointerdown', this.onClick);
 
     // Create text for button label
     this.buttonText = new Text(this.content, this.style);
@@ -46,6 +43,14 @@ class Button extends PixiComponent implements IButton {
     // Add sprite and text to container
     this.addChild(this.sprite);
     this.sprite.addChild(this.buttonText);
+  }
+
+  get spriteSelf() {
+    return this.sprite;
+  }
+
+  get textSelf() {
+    return this.buttonText;
   }
 
   setSize(width: number, height: number): void {

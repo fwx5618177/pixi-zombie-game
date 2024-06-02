@@ -6,6 +6,5 @@ export interface IButton extends Container {
     y: number;
     content: string;
     style: TextStyle;
-    onClick: () => void;
     buttonImage: string;
 }

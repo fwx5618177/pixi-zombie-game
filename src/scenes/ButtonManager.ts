@@ -11,8 +11,8 @@ class ButtonManager {
     this.buttons = [];
   }
 
-  createButton(x: number, y: number, text: string, style: TextStyle, onClick: () => void, buttonImage: string): Button {
-    const button = new Button(this.app, x, y, text, style, onClick, buttonImage);
+  createButton(x: number, y: number, text: string, style: TextStyle, buttonImage: string): Button {
+    const button = new Button(this.app, x, y, text, style, buttonImage);
     this.buttons.push(button);
     this.app.stage.addChild(button);
     return button;
